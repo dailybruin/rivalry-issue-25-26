@@ -7,7 +7,8 @@ function App() {
   const [ data, setData ] = useState(null);
   
   useEffect(() => {
-		fetch("<TODO: insert api url here>")
+    // TODO: REPLACE THIS LINK WITH THE CORRECT LINK FROM THIS YEAR ONCE KERCKHOFF IS FIXED
+		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-24-25")
 		.then(res => res.json())
 		.then(res => setData(res.data['article.aml']))
   }, [])
