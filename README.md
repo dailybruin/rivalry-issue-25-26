@@ -1,7 +1,3 @@
-## Flat Page Starter Template in React
-
-This repository is a template for building flat pages in React. It provides a basic structure with common scripts to help you get started quickly.
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -45,8 +41,3 @@ To set up, test, and build the app:
 2. **Run locally**:
    ```bash
    npm start
-
-
-## Documentation
-
-See documentation [LINK IT HERE SAKSHI] for GitHub rules, PR conventions, and good coding practices.
