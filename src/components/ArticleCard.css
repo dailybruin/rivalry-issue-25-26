@@ -1,0 +1,99 @@
+/* Article Card styles */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  
+  /* Mobile-first width */
+  max-width: 20rem; /* 320px */
+  margin: 0 auto 1.5rem auto; /* Center horizontally, add 24px bottom margin */
+}
+.article-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.article-card:hover .article-card-title {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Article image styles */
+.article-card-image-wrapper {
+  flex-shrink: 0;
+}
+.article-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* Mobile: Wide 21/9 aspect ratio for ~35% height */
+  aspect-ratio: 21 / 9; 
+}
+
+/* Text content area */
+.article-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.25rem 1rem 1rem; /* 4px top, 16px horizontal, 16px bottom */
+}
+
+/* Headline title */
+.article-card-title {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  font-weight: 700;
+  color: #111827; /* gray-900 */
+}
+
+/* Byline */
+.article-card-byline {
+  margin-top: 0.5rem; /* 8px */
+  font-size: 0.875rem; /* 14px */
+  color: #6b7280; /* gray-500 */
+  flex-grow: 1;
+}
+
+/* --- Responsive Breakpoints --- */
+
+/* Small screens (tablets) */
+@media (min-width: 640px) {
+  /* Wider max-width for card on desktop */
+  .article-card {
+    max-width: 28rem; /* 448px */
+  }
+
+  .article-card-content {
+    /* Reduced bottom padding to shorten text area */
+    padding: 0.5rem 1.25rem 0.75rem; /* 8px top, 20px h, 12px bottom */
+  }
+  .article-card-title {
+    font-size: 1.75rem; /* 28px */
+    line-height: 2.25rem; /* 36px */
+  }
+  .article-card-byline {
+    font-size: 1rem; /* 16px */
+  }
+  .article-card-image {
+    /* Desktop: Taller 16/10 aspect ratio for ~60% height */
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Medium screens (laptops) & larger */
+@media (min-width: 1024px) { 
+  .article-card {
+    max-width: 28rem; /* 448px */
+  }
+
+  .article-card-content {
+    /* Reduced bottom padding to shorten text area */
+    padding: 0.75rem 1.5rem 1rem; /* 12px top, 24px h, 16px bottom */
+  }
+  /* Image aspect ratio is already 16/10 (inherited from 640px) */
+}
