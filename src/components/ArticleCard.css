@@ -1,3 +1,7 @@
+/* Google Font Import - Playfair Display (Headline) and Open Sans (Subheading) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Playfair+Display:wght@700&display=swap');
+
+
 /* Article Card styles */
 .article-card {
   display: flex;
@@ -9,6 +13,9 @@
   transition: box-shadow 0.3s ease-in-out;
   text-decoration: none;
   color: inherit;
+  
+  /* 1px solid black border */
+  border: 1px solid black;
   
   /* Mobile-first width */
   max-width: 20rem; /* 320px */
@@ -32,7 +39,7 @@
   height: auto;
   object-fit: cover;
   /* Mobile: Wide 21/9 aspect ratio for ~35% height */
-  aspect-ratio: 21 / 9; 
+  aspect-ratio: 21 / 12; 
 }
 
 /* Text content area */
@@ -40,21 +47,29 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 0.25rem 1rem 1rem; /* 4px top, 16px horizontal, 16px bottom */
+  /* UPDATED: Reduced padding for mobile */
+  padding: 0.25rem 0.75rem 0.75rem; /* 4px top, 12px horizontal, 12px bottom */
 }
 
 /* Headline title */
 .article-card-title {
-  font-size: 1.5rem; /* 24px */
-  line-height: 2rem; /* 32px */
+  font-family: "Playfair Display", serif;
+  font-size: 35px;
+  line-height: 1;
   font-weight: 700;
+  letter-spacing: 0;
   color: #111827; /* gray-900 */
 }
 
-/* Byline */
+/* Byline (Subheading) */
 .article-card-byline {
   margin-top: 0.5rem; /* 8px */
-  font-size: 0.875rem; /* 14px */
+  
+  /* UPDATED: Open Sans, 20px, Weight 400 */
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  
   color: #6b7280; /* gray-500 */
   flex-grow: 1;
 }
@@ -69,15 +84,17 @@
   }
 
   .article-card-content {
-    /* Reduced bottom padding to shorten text area */
-    padding: 0.5rem 1.25rem 0.75rem; /* 8px top, 20px h, 12px bottom */
+    /* UPDATED: Reduced padding for tablet */
+    padding: 0.5rem 1rem 0.5rem; /* 8px top, 16px h, 8px bottom */
   }
   .article-card-title {
-    font-size: 1.75rem; /* 28px */
-    line-height: 2.25rem; /* 36px */
+    /* Keep desktop font size consistent */
+    font-size: 35px; 
+    line-height: 1;
   }
   .article-card-byline {
-    font-size: 1rem; /* 16px */
+    /* Ensure 20px carries over to desktop if not overridden */
+    font-size: 20px; 
   }
   .article-card-image {
     /* Desktop: Taller 16/10 aspect ratio for ~60% height */
@@ -92,8 +109,8 @@
   }
 
   .article-card-content {
-    /* Reduced bottom padding to shorten text area */
-    padding: 0.75rem 1.5rem 1rem; /* 12px top, 24px h, 16px bottom */
+    /* UPDATED: Reduced padding for desktop */
+    padding: 0.5rem 1rem 0.75rem; /* 8px top, 16px h, 12px bottom */
   }
   /* Image aspect ratio is already 16/10 (inherited from 640px) */
 }
