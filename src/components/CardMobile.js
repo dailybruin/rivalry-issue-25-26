@@ -1,0 +1,47 @@
+import { mediaQueries } from '../shared/config';
+import styled from 'styled-components';
+import SampleImage from '../images/CardSampleImg.jpg';
+
+const Container = styled.div`
+    display: none;
+    ${mediaQueries.mobile} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 55%;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+`;
+const Image = styled.img`
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-radius: 10px 10px 0 0;
+`;
+const Headline = styled.h2`
+    font-size: 18px;
+    font-weight: bold;
+    width: 78%;
+    text-align: left;
+    margin-bottom: 0;
+`;
+const Byline = styled.p`
+    font-size: 10px;
+    width: 78%;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 15px;
+`;
+const headlineContent = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
+const bylineContent = "By this person, more people and maybe even more";
+const CardMobile = () => {
+    return (
+        <Container>
+            <Image src={SampleImage} alt="Card Image" />
+            <Headline>{headlineContent}</Headline>
+            <Byline>{bylineContent}</Byline>
+        </Container>
+    )
+}
+
+export default CardMobile;
