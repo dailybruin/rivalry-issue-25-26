@@ -55,7 +55,7 @@
 .article-card-title {
   font-family: "Playfair Display", serif;
   font-size: 35px;
-  line-height: 1;
+  line-height: 1.25;
   font-weight: 700;
   letter-spacing: 0;
   color: #111827; /* gray-900 */
@@ -70,7 +70,7 @@
   font-size: 20px;
   font-weight: 400;
   
-  color: #6b7280; /* gray-500 */
+  color: #000; /* black */
   flex-grow: 1;
 }
 
@@ -90,7 +90,7 @@
   .article-card-title {
     /* Keep desktop font size consistent */
     font-size: 35px; 
-    line-height: 1;
+    line-height: 1.25;
   }
   .article-card-byline {
     /* Ensure 20px carries over to desktop if not overridden */
