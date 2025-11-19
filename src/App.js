@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CardMobile from './components/CardMobile';
+import QuoteMobile from './components/QuoteMobile';
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -19,6 +20,7 @@ function App() {
       <Header/>
       Hello Daily Bruin!
       <CardMobile/>
+      <QuoteMobile/>
       <Footer/>
     </div>
   );
