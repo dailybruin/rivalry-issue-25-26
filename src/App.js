@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Landing from './pages/Landing';
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -16,7 +17,7 @@ function App() {
   return data && (
     <div className="App">
       <Header/>
-      Hello Daily Bruin!
+      <Landing data={data} />
       <Footer/>
     </div>
   );
