@@ -4,6 +4,7 @@ import SampleImage from '../images/CardSampleImg.jpg';
 
 const Container = styled.div`
     display: none;
+
     ${mediaQueries.mobile} {
         display: flex;
         flex-direction: column;
@@ -11,6 +12,15 @@ const Container = styled.div`
         width: 55%;
         border: 1px solid black;
         border-radius: 10px;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        &:hover h2 {
+            text-decoration: underline;
+        }   
     }
 `;
 const Image = styled.img`
@@ -19,6 +29,7 @@ const Image = styled.img`
     border-radius: 10px 10px 0 0;
 `;
 const Headline = styled.h2`
+    font-family: "Playfair Display", serif;
     font-size: 18px;
     font-weight: bold;
     width: 78%;
