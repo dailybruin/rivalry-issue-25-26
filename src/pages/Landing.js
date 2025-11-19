@@ -6,7 +6,7 @@ const Landing = () => {
     <div className="landing-container">
       <img src={landingImg} alt="landing image" />
       <div className="credits">
-        <h1>illo credits/position</h1>
+        <h1>Kaylen Ho/Daily Bruin Staff</h1>
       </div>
     </div>
   );
