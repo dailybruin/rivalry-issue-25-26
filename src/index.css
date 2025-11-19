@@ -5,9 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   /* background-image: 
+      url("./images/clouds.png"),     /* This image appears ON TOP */
+      /* url("./images//field.png");   */ 
+
+    /* background-size: cover, cover;  Each layer can have its own size */
+    background-position: center, center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
