@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
 
+
 function App() {
   const [ data, setData ] = useState(null);
   
@@ -23,6 +24,7 @@ function App() {
       <Header />
       <main>
         <ArticleGrid articles={articles} />
+        
       </main>
       <Footer />
     </div>

@@ -2,56 +2,105 @@
 
 import React from "react";
 import styled from "styled-components";
+import PullQuote from "./PullQuote"; // 🔹 add this
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15vw;
-  margin: 30vw auto;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  width: 50%;
+  gap: 6vh;          /* vertical distance between rows */
+  width: 80%;
+  margin: 8vh auto;
 
-  @media (max-width: 768px) {
-    width: 70%;
-    gap: 10vw;
+  @media (max-width: 48em) {
+    width: 90%;
+    gap: 4vh;
+    margin: 6vh auto;
   }
 `;
 
-const RightItem = styled.div`
-  align-self: flex-end;
+// One row = article + optional quote
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 4vw;
+  width: 100%;
 
-  @media (max-width: 768px) {
-    align-self: center;
+  @media (max-width: 48em) {
+    flex-direction: column;
+    gap: 3vh;
   }
 `;
 
-const LeftItem = styled.div`
-  align-self: flex-start;
+const CardWrapper = styled.div`
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: ${props => (props.align === "left" ? "flex-start" : "flex-end")};
+`;
 
-  @media (max-width: 768px) {
-    align-self: center;
+const QuoteWrapper = styled.div`
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: ${props => (props.align === "left" ? "flex-end" : "flex-start")};
+  align-items: center;
+
+  @media (max-width: 48em) {
+    justify-content: center;
   }
 `;
 
 const PlaceholderCard = styled.div`
-  width: 538px;
-  height: 645px;
+  width: 38vw;
+  max-width: 34rem;
+  aspect-ratio: 538 / 645;  /* keeps the same shape without px height */
   background: #dcdcdc;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 `;
 
 const ArticleGrid = ({ articles = [] }) => {
   return (
     <Container>
       {articles.map((_, index) => {
-        const Wrapper = index % 2 === 0 ? LeftItem : RightItem;
+        const alignLeft = index % 2 === 0;      // even index: card on left, odd: card on right
+        const showQuote = index % 2 === 0;      // 🔹 "every other article" – here: 0, 2, 4, ...
 
         return (
-          <Wrapper key={index}>
-            <PlaceholderCard />
-          </Wrapper>
+          <Row key={index}>
+            {alignLeft ? (
+              <>
+                {/* card left */}
+                <CardWrapper align="left">
+                  <PlaceholderCard />
+                </CardWrapper>
+
+                {/* quote right, only on every other article */}
+                {showQuote ? (
+                  <QuoteWrapper align="left">
+                    <PullQuote />
+                  </QuoteWrapper>
+                ) : (
+                  <QuoteWrapper align="left" />
+                )}
+              </>
+            ) : (
+              <>
+                {/* quote left for odd-indexed rows that should have one */}
+                {showQuote ? (
+                  <QuoteWrapper align="right">
+                    <PullQuote />
+                  </QuoteWrapper>
+                ) : (
+                  <QuoteWrapper align="right" />
+                )}
+
+                {/* card right */}
+                <CardWrapper align="right">
+                  <PlaceholderCard />
+                </CardWrapper>
+              </>
+            )}
+          </Row>
         );
       })}
     </Container>
