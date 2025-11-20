@@ -148,7 +148,7 @@ const ArticleGrid = ({ articles = [] }) => {
                     imageUrl={item.article_image}
                     url={item.article_url}
                   /> */}
-                  <PlaceholderCard/>
+                  <ArticleCard/>
                 </CardWrapper>
                 {index === 2 && (
                   <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
@@ -172,7 +172,8 @@ const ArticleGrid = ({ articles = [] }) => {
                     imageUrl={item.article_image}
                     url={item.article_url}
                   /> */}
-                  <PlaceholderCard/>
+                  {/* <PlaceholderCard/> */}
+                  <ArticleCard/>
                 </CardWrapper>
               </Row>
             );
@@ -208,7 +209,8 @@ const ArticleGrid = ({ articles = [] }) => {
                     imageUrl={item.article_image}
                     url={item.article_url}
                   /> */}
-                  <PlaceholderCard/>
+                  {/* <PlaceholderCard/> */}
+                  <ArticleCard/>
                 </CardWrapper>
               </Row>
             );
