@@ -5,9 +5,21 @@ import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
 
 import Landing from './pages/Landing';
+import CardMobile from './components/CardMobile';
+import QuoteMobile from './components/QuoteMobile';
+import MobileContainer from "./components/MobileContainer";
 
 function App() {
   const [ data, setData ] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   
   useEffect(() => {
     // FIXME: NEW KERCHOFF PACKAGE
@@ -25,10 +37,12 @@ function App() {
     <div className="App">
       <Header />
       <Landing data={data} />
-      <main>
-        <ArticleGrid articles={articles} />
-        
-      </main>
+      {isDesktop && (
+        <main>
+          <ArticleGrid articles={articles} />
+        </main>
+      )}
+      <MobileContainer />
       <Footer />
     </div>
   );
