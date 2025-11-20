@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PullQuote from "./PullQuote";
 import clouds_bg from "../images/clouds_bg.png";
 import field_bg from "../images/field_bg.png";
+import ArticleCard from "./ArticleCard";
 
 // --- Background Wrapper ---
 const BackgroundWrapper = styled.div`
@@ -141,7 +142,13 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  <PlaceholderCard/>
                 </CardWrapper>
                 {index === 2 && (
                   <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
@@ -159,7 +166,13 @@ const ArticleGrid = ({ articles = [] }) => {
                   <QuoteWrapper align="left"><PullQuote align="left" /></QuoteWrapper>
                 )}
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  <PlaceholderCard/>
                 </CardWrapper>
               </Row>
             );
@@ -189,7 +202,13 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset}>
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  <PlaceholderCard/>
                 </CardWrapper>
               </Row>
             );
