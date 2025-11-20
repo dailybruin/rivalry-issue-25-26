@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+/* Load ITC Century font for use in components (e.g. PullQuote, Header) */
+@font-face {
+  font-family: 'ITC Century Std';
+  src: local('ITC Century Std'), local('ITC Century Std Book'), url('./fonts/ITC Century Std Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
