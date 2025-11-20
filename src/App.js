@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
 
+import Landing from './pages/Landing';
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -23,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Landing data={data} />
       <main>
         <ArticleGrid articles={articles} />
         
