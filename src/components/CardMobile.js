@@ -10,6 +10,7 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         width: 55%;
+        margin-top: 12vh;
         border: 1px solid black;
         border-radius: 10px;
         transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -43,9 +44,8 @@ const Byline = styled.p`
     margin-top: 5px;
     margin-bottom: 15px;
 `;
-const headlineContent = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
-const bylineContent = "By this person, more people and maybe even more";
-const CardMobile = () => {
+
+const CardMobile = ({ headlineContent, bylineContent }) => {
     return (
         <Container>
             <Image src={SampleImage} alt="Card Image" />
