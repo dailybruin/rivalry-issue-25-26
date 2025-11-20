@@ -14,7 +14,7 @@ const Container = styled.div`
         border: 1px solid black;
         border-radius: 10px;
         transition: box-shadow 0.2s ease, transform 0.2s ease;
-
+        background-color: white;
         &:hover {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
