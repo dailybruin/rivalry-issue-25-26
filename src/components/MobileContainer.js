@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import CardMobile from './CardMobile';
 import QuoteMobile from './QuoteMobile';
 import { useState, useEffect } from 'react';
+import clouds from '../images/clouds.png';
+import fieldmarks from '../images/fieldmarks.png';
+import grass from '../images/grass.png';
+
+
+
 
 const Container = styled.div`
     display: none;
@@ -12,8 +18,8 @@ const Container = styled.div`
         align-items: center;
         width: 100%;
         padding-bottom: 12vh;
-        border: 1px solid black;
-        border-radius: 10px;
+        background-image: url(${clouds}), url(${fieldmarks}), url(${grass});
+        background-size: cover, cover, cover;
     }
 `;
 const quote = "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lorem enim. Elit commodo pariatur minim proident elit cupidatat velit Lorem labore.";
