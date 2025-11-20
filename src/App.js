@@ -7,7 +7,8 @@ function App() {
   const [ data, setData ] = useState(null);
   
   useEffect(() => {
-		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-25-26")
+    // FIXME: NEW KERCHOFF PACKAGE
+		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-24-25")
 		.then(res => res.json())
 		.then(res => setData(res.data['article.aml']))
   }, [])
