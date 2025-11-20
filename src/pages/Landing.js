@@ -6,7 +6,7 @@ const Landing = () => {
     <div className="landing-container">
       <img src={landingImg} alt="landing image" />
       <div className="credits">
-        <h1>Kaylen Ho/Daily Bruin Staff</h1>
+        <h1>Helen Juwon Park/Illustrations Director & Kaylen Ho/Daily Bruin Staff</h1>
       </div>
     </div>
   );
