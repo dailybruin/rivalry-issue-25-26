@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import quoteMarkImage from "../images/quoteMark.png";
+
 
 // Outer box (matches the 533x222 Figma box, but responsive)
 const PullQuoteWrapper = styled.section`
@@ -36,21 +38,20 @@ const PullQuoteText = styled.p`
 `;
 
 // Big green quotation mark in the top-left
-const QuoteMark = styled.span`
+const QuoteMarkImage = styled.img`
   position: absolute;
-  top: -4.5rem;
-  left: -6.5rem;
+  top: -2rem;
+  left: -5rem;
 
-  font-family: "ITC Century Std", "Cormorant Garamond", serif;
-  font-size: 25rem;           /* ~400px */
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -5.25rem;   /* ~-84px */
-  color: #548b32;
+  width: 7rem;      
+  height: 7rem;
+  object-fit: contain;
+
   transform: rotate(-13.8deg);
 
   pointer-events: none;
   user-select: none;
+  z-index: 0;        /* ensure it’s behind text if needed */
 `;
 
 // 22-word temp text so the box is sized realistically
@@ -62,7 +63,7 @@ function PullQuote({ text }) {
 
   return (
     <PullQuoteWrapper>
-      <QuoteMark>“</QuoteMark>
+      <QuoteMarkImage src={quoteMarkImage} alt="Quote Mark" />
       <PullQuoteText>{content}</PullQuoteText>
     </PullQuoteWrapper>
   );
