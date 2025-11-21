@@ -107,7 +107,7 @@ const QuoteWrapper = styled.div`
   }
 `;
 
-const PlaceholderCard = styled.div`
+/*const PlaceholderCard = styled.div`
   width: 38vw;
   max-width: 34rem;
   aspect-ratio: 538 / 645;
@@ -118,6 +118,18 @@ const PlaceholderCard = styled.div`
   @media (max-width: 48em) {
     width: 85%;
     max-width: 40rem;
+  }
+`;*/
+
+const CardSizeWrapper = styled.div`
+  width: 38vw;
+  max-width: 34rem;
+  aspect-ratio: 538 / 645;
+
+  @media (max-width: 48em) {
+    width: 85%;
+    max-width: 40rem;
+    aspect-ratio: auto;
   }
 `;
 
@@ -148,7 +160,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     imageUrl={item.article_image}
                     url={item.article_url}
                   /> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
                 {index === 2 && (
                   <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
@@ -173,7 +187,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     url={item.article_url}
                   /> */}
                   {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
@@ -210,7 +226,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     url={item.article_url}
                   /> */}
                   {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
