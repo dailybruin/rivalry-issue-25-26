@@ -150,7 +150,7 @@ const ArticleGrid = ({ articles = [] }) => {
 
           // First 3 cards (0-2)
           if (index < 3) {
-            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-3vh";
+            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-15vh";
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
@@ -173,7 +173,7 @@ const ArticleGrid = ({ articles = [] }) => {
 
           // Next 3 cards (3-5)
           if (index < 6) {
-            const offset = index === 4 ? "half" : "-5vh";
+            const offset = index === 4 ? "half" : "-15vh";
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 {index === 5 && (
@@ -198,8 +198,8 @@ const ArticleGrid = ({ articles = [] }) => {
           // Last 5 cards (6-10)
           if (index < 11) {
             let offset;
-            if (index === 6) offset = "-4vh";
-            else if (index === 8) offset = "-8vh";
+            if (index === 6) offset = "-10vh";
+            else if (index === 8) offset = "-25vh";
             else offset = "half";
 
             if (index === 10) {
