@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
+import Landing from './pages/Landing';
+import MobileContainer from './components/MobileContainer';
 
 
 function App() {
