@@ -7,9 +7,19 @@ import ArticleGrid from './components/Article_Grid';
 
 function App() {
   const [ data, setData ] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   
   useEffect(() => {
-		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-25-26")
+    // FIXME: NEW KERCHOFF PACKAGE
+		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-24-25")
 		.then(res => res.json())
 		.then(res => setData(res.data['article.aml']))
   }, [])
@@ -22,10 +32,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <ArticleGrid articles={articles} />
-        
-      </main>
+      <Landing data={data} />
+      {isDesktop && (
+        <main>
+          <ArticleGrid articles={articles} />
+        </main>
+      )}
+      <MobileContainer />
       <Footer />
     </div>
   );

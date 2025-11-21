@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PullQuote from "./PullQuote";
 import clouds_bg from "../images/clouds_bg.png";
 import field_bg from "../images/field_bg.png";
+import ArticleCard from "./ArticleCard";
 
 // --- Background Wrapper ---
 const BackgroundWrapper = styled.div`
@@ -106,7 +107,7 @@ const QuoteWrapper = styled.div`
   }
 `;
 
-const PlaceholderCard = styled.div`
+/*const PlaceholderCard = styled.div`
   width: 38vw;
   max-width: 34rem;
   aspect-ratio: 538 / 645;
@@ -117,6 +118,18 @@ const PlaceholderCard = styled.div`
   @media (max-width: 48em) {
     width: 85%;
     max-width: 40rem;
+  }
+`;*/
+
+const CardSizeWrapper = styled.div`
+  width: 38vw;
+  max-width: 34rem;
+  aspect-ratio: 538 / 645;
+
+  @media (max-width: 48em) {
+    width: 85%;
+    max-width: 40rem;
+    aspect-ratio: auto;
   }
 `;
 
@@ -141,7 +154,15 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  <CardSizeWrapper>
+                  <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
                 {index === 2 && (
                   <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
@@ -159,7 +180,16 @@ const ArticleGrid = ({ articles = [] }) => {
                   <QuoteWrapper align="left"><PullQuote align="left" /></QuoteWrapper>
                 )}
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
+                  <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
@@ -189,7 +219,16 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset}>
                 <CardWrapper align={cardAlign}>
-                  <PlaceholderCard />
+                  {/* <ArticleCard
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
+                  /> */}
+                  {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
+                  <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
