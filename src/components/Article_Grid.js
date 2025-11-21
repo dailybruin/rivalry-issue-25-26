@@ -134,7 +134,7 @@ const CardSizeWrapper = styled.div`
 `;
 
 const ArticleGrid = ({ articles = [] }) => {
-  const rows = articles.length ? articles : Array.from({ length: 11 });
+  const rows = Array.from({ length: 11 }, (_, index) => articles[index] || null);
 
   return (
     <BackgroundWrapper>
@@ -203,6 +203,7 @@ const ArticleGrid = ({ articles = [] }) => {
             else offset = "half";
 
             if (index === 10) {
+              /*console.log("ten")*/
               return (
                 <Row key={index} offset="-15vh" alignLeft={true}>
                   <CardWrapper align="left">
