@@ -1,5 +1,6 @@
 import React from 'react';
 import './ArticleCard.css'; // <-- Import the new CSS file
+import tempImg from "../images/CardSampleImg.jpg";
 
 /**
  * A single, responsive Article Card component.
@@ -61,7 +62,7 @@ export default function ArticleCard() {
   
   const title = "On a whim' to Westwood: Maddie Anyimi's unexpected journey";
   const byline = "By Jake Moody, Daily Bruin senior staff";
-  const imageUrl = "https://placehold.co/600x400/003049/white?text=Article+Image&font=inter";
+  const imageUrl = tempImg;
   const url = "#";
 
   // Fallback image handler
