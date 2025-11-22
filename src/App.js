@@ -3,11 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
-
 import Landing from './pages/Landing';
-import CardMobile from './components/CardMobile';
-import QuoteMobile from './components/QuoteMobile';
-import MobileContainer from "./components/MobileContainer";
+import MobileContainer from './components/MobileContainer';
+
 
 function App() {
   const [ data, setData ] = useState(null);

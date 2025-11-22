@@ -1,8 +1,8 @@
+import React from 'react';
 import { mediaQueries } from '../shared/config';
 import styled from 'styled-components';
 import CardMobile from './CardMobile';
 import QuoteMobile from './QuoteMobile';
-import { useState, useEffect } from 'react';
 import clouds from '../images/clouds.png';
 import fieldmarks from '../images/fieldmarks.png';
 import grass from '../images/grass.png';
@@ -26,10 +26,10 @@ const quote = "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lo
 const headline = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
 const byline = "By this person, more people and maybe even more";
 const MobileContainer = () => {
-    const [quoteContent, setQuoteContent] = useState(quote);
-    const [headlineContent, setHeadlineContent] = useState(headline);
-    const [bylineContent, setBylineContent] = useState(byline);
-    const [containerContent, setContainerContent] = useState([
+    const quoteContent = quote;
+    const headlineContent = headline;
+    const bylineContent = byline;
+    const containerContent = [
         {
             "type": "article",
             "headline": headline,
@@ -92,19 +92,19 @@ const MobileContainer = () => {
             "headline": headline,
             "byline": byline
         },
-    ]);
+    ];
 
     return (
         <Container>
-            {containerContent.map((content) => (
-                <>
-                    {content.type === "article" ? (
-                        <CardMobile headlineContent={headlineContent} bylineContent={bylineContent} />
-                    ) : (
-                        <QuoteMobile quoteContent={quoteContent} />
-                    )}
-                </>
-            ))}
+                {containerContent.map((content, i) => (
+                    <React.Fragment key={i}>
+                        {content.type === "article" ? (
+                            <CardMobile headlineContent={headlineContent} bylineContent={bylineContent} />
+                        ) : (
+                            <QuoteMobile quoteContent={quoteContent} />
+                        )}
+                    </React.Fragment>
+                ))}
         </Container>
     )
 }

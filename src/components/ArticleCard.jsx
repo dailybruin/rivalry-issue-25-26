@@ -83,10 +83,10 @@ export default function ArticleCard() {
     >
       {/* Article Image */}
       <div className="article-card-image-wrapper">
-        <img
-          className="article-card-image" // Use standard CSS class
-          src={imageUrl}
-          alt={`Image for article: ${title}`}
+            <img
+              className="article-card-image" // Use standard CSS class
+              src={imageUrl}
+              alt={title}
           onError={handleImageError}
         />
       </div>
