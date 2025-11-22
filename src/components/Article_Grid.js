@@ -107,7 +107,7 @@ const QuoteWrapper = styled.div`
   }
 `;
 
-const PlaceholderCard = styled.div`
+/*const PlaceholderCard = styled.div`
   width: 38vw;
   max-width: 34rem;
   aspect-ratio: 538 / 645;
@@ -119,10 +119,22 @@ const PlaceholderCard = styled.div`
     width: 85%;
     max-width: 40rem;
   }
+`;*/
+
+const CardSizeWrapper = styled.div`
+  width: 38vw;
+  max-width: 34rem;
+  aspect-ratio: 538 / 645;
+
+  @media (max-width: 48em) {
+    width: 85%;
+    max-width: 40rem;
+    aspect-ratio: auto;
+  }
 `;
 
 const ArticleGrid = ({ articles = [] }) => {
-  const rows = articles.length ? articles : Array.from({ length: 11 });
+  const rows = Array.from({ length: 11 }, (_, index) => articles[index] || null);
 
   return (
     <BackgroundWrapper>
@@ -138,7 +150,7 @@ const ArticleGrid = ({ articles = [] }) => {
 
           // First 3 cards (0-2)
           if (index < 3) {
-            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-3vh";
+            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-15vh";
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
@@ -148,7 +160,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     imageUrl={item.article_image}
                     url={item.article_url}
                   /> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
                 {index === 2 && (
                   <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
@@ -159,7 +173,7 @@ const ArticleGrid = ({ articles = [] }) => {
 
           // Next 3 cards (3-5)
           if (index < 6) {
-            const offset = index === 4 ? "half" : "-5vh";
+            const offset = index === 4 ? "half" : "-15vh";
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 {index === 5 && (
@@ -173,7 +187,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     url={item.article_url}
                   /> */}
                   {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
@@ -182,11 +198,12 @@ const ArticleGrid = ({ articles = [] }) => {
           // Last 5 cards (6-10)
           if (index < 11) {
             let offset;
-            if (index === 6) offset = "-4vh";
-            else if (index === 8) offset = "-8vh";
+            if (index === 6) offset = "-10vh";
+            else if (index === 8) offset = "-25vh";
             else offset = "half";
 
             if (index === 10) {
+              /*console.log("ten")*/
               return (
                 <Row key={index} offset="-15vh" alignLeft={true}>
                   <CardWrapper align="left">
@@ -210,7 +227,9 @@ const ArticleGrid = ({ articles = [] }) => {
                     url={item.article_url}
                   /> */}
                   {/* <PlaceholderCard/> */}
+                  <CardSizeWrapper>
                   <ArticleCard/>
+                  </CardSizeWrapper>
                 </CardWrapper>
               </Row>
             );
