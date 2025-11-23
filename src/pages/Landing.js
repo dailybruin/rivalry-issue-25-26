@@ -1,10 +1,11 @@
-import landingImg from "../images/landing.png";
+// import landingImg from "../images/landing.png";
+import rivalryLanding from "../images/rivalrylanding.png"
 import "./Landing.css";
 
 const Landing = () => {
   return (
     <div className="landing-container">
-      <img src={landingImg} alt="Landing illustration" />
+      <img src={rivalryLanding} alt="Landing illustration" />
       <div className="credits">
         <h1>Helen Juwon Park / Illustrations Director & Kaylen Ho / Daily Bruin Staff</h1>
       </div>
