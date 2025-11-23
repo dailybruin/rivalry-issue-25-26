@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
 import Landing from './pages/Landing';
+import TextSection from "./pages/TextSection";
 import MobileContainer from './components/MobileContainer';
 
 
@@ -35,6 +36,7 @@ function App() {
     <div className="App">
       <Header />
       <Landing data={data} />
+      <TextSection />
       {isDesktop && (
         <main>
           <ArticleGrid articles={articles} />
