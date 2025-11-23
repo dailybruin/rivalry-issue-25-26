@@ -51,22 +51,45 @@ const PullQuoteText = styled.p`
 // Big green quotation mark in the top-left
 const QuoteMarkImage = styled.img`
   position: absolute;
-  top: -2rem;
-  left: -5rem;
+  top: clamp(-1rem, -1.5vw, -2rem);
+  left: clamp(-2rem, -3.5vw, -5rem);
 
-  width: clamp(3rem, 10vw, 6.5rem);
+  /* Scales from 3rem to 5rem based on viewport - width controls size */
+  width: clamp(3rem, 4vw, 5rem);
+  /* Height auto ensures aspect ratio is maintained from original image */
   height: auto;
+  /* Display block prevents inline spacing issues */
+  display: block;
+  /* Preserve aspect ratio and prevent distortion */
   object-fit: contain;
+  /* Ensure no constraints interfere with natural scaling */
+  max-height: none;
+  max-width: none;
+  /* Prevent any flex/grid constraints */
+  flex-shrink: 0;
 
   transform: rotate(-13.8deg);
 
   pointer-events: none;
   user-select: none;
-  z-index: 0;        /* ensure it’s behind text if needed */
+  z-index: 0;        /* ensure it's behind text if needed */
 
   @media (max-width: 48em) {
-    top: -1.5rem;
-    left: -3rem;
+    top: clamp(-0.75rem, -1vw, -1.5rem);
+    left: clamp(-1.5rem, -2.5vw, -3rem);
+    /* Even smaller on mobile: scales from 1.5rem to 3rem */
+    width: clamp(1.5rem, 5vw, 3rem);
+    /* Maintain aspect ratio on mobile too */
+    height: auto;
+  }
+
+  @media (max-width: 30em) {
+    /* Extra small screens: scale down even more */
+    width: clamp(1.25rem, 4vw, 2.5rem);
+    top: clamp(-0.5rem, -0.75vw, -1rem);
+    left: clamp(-1rem, -2vw, -2rem);
+    /* Maintain aspect ratio on extra small screens */
+    height: auto;
   }
 `;
 
