@@ -18,11 +18,12 @@
     text-align: center;
     color: black;
     background-color: white;
-    padding: 0.2rem 3rem;
+    padding: 0.2rem 1rem;
     border-radius: 0.6rem;
+    width: 40%;
 }
 
 .credits h1 {
-    font-size: 1rem;
+    font-size: 0.7rem;
     font-weight: 400;
 }
