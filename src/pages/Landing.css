@@ -24,6 +24,13 @@
 }
 
 .credits h1 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .credits h1 {
     font-size: 0.7rem;
     font-weight: 400;
+  }
 }
