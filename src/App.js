@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ArticleGrid from './components/Article_Grid';
 import Landing from './pages/Landing';
 import MobileContainer from './components/MobileContainer';
+import DescriptionDesktop from "./components/DescriptionBox";
 
 
 function App() {
@@ -36,9 +37,12 @@ function App() {
       <Header />
       <Landing data={data} />
       {isDesktop && (
+        <>
+        <DescriptionDesktop/>
         <main>
           <ArticleGrid articles={articles} />
         </main>
+        </>
       )}
       <MobileContainer />
       <Footer />
