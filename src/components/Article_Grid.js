@@ -69,7 +69,7 @@ const Row = styled.div`
 
   @media (max-width: 48em) {
     /* keep side-by-side layout even when window narrows; adjust spacing */
-    margin-top: ${({ alignLeft }) => (alignLeft ? "8vh" : "6vh") } !important;
+    margin-top: ${({ alignLeft }) => (alignLeft ? "8vh" : "6vh")} !important;
     align-items: ${({ alignLeft }) => (alignLeft ? "flex-start" : "center")};
   }
 `;
@@ -77,7 +77,8 @@ const Row = styled.div`
 const CardWrapper = styled.div`
   flex: 1 1 50%;
   display: flex;
-  justify-content: ${({ align }) => (align === "left" ? "flex-start" : "flex-end")};
+  justify-content: ${({ align }) =>
+    align === "left" ? "flex-start" : "flex-end"};
   align-items: center;
 
   @media (max-width: 48em) {
@@ -89,7 +90,8 @@ const CardWrapper = styled.div`
 const QuoteWrapper = styled.div`
   flex: 1 1 50%;
   display: flex;
-  justify-content: ${({ align }) => (align === "left" ? "flex-end" : "flex-start")};
+  justify-content: ${({ align }) =>
+    align === "left" ? "flex-end" : "flex-start"};
   align-items: center;
 
   /* make the quote box resize fluidly between a min and max width */
@@ -107,20 +109,6 @@ const QuoteWrapper = styled.div`
   }
 `;
 
-/*const PlaceholderCard = styled.div`
-  width: 38vw;
-  max-width: 34rem;
-  aspect-ratio: 538 / 645;
-  background: #dcdcdc;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 48em) {
-    width: 85%;
-    max-width: 40rem;
-  }
-`;*/
-
 const CardSizeWrapper = styled.div`
   width: 38vw;
   max-width: 34rem;
@@ -134,7 +122,10 @@ const CardSizeWrapper = styled.div`
 `;
 
 const ArticleGrid = ({ articles = [], quotes = [] }) => {
-  const rows = Array.from({ length: 11 }, (_, index) => articles[index] || null);
+  const rows = Array.from(
+    { length: 11 },
+    (_, index) => articles[index] || null
+  );
 
   return (
     <BackgroundWrapper>
@@ -145,6 +136,8 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
       {/* Main content */}
       <Container>
         {rows.map((item, index) => {
+          if (!item) return null;
+
           const isEven = index % 2 === 0;
           const cardAlign = isEven ? "left" : "right";
 
@@ -155,17 +148,16 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item?.article_title}
-                    byline={item?.article_byline}
-                    imageUrl={item?.article_image}
-                    url={item?.article_url}
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
                   />
-                  {/* <CardSizeWrapper>
-                  <ArticleCard/>
-                  </CardSizeWrapper> */}
                 </CardWrapper>
                 {index === 2 && quotes[0] && (
-                  <QuoteWrapper align="right"><PullQuote text={quotes[0]} align="right" /></QuoteWrapper>
+                  <QuoteWrapper align="right">
+                    <PullQuote text={quotes[0]} align="right" />
+                  </QuoteWrapper>
                 )}
               </Row>
             );
@@ -177,19 +169,17 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 {index === 5 && quotes[1] && (
-                  <QuoteWrapper align="left"><PullQuote text={quotes[1]} align="left" /></QuoteWrapper>
+                  <QuoteWrapper align="left">
+                    <PullQuote text={quotes[1]} align="left" />
+                  </QuoteWrapper>
                 )}
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item?.article_title}
-                    byline={item?.article_byline}
-                    imageUrl={item?.article_image}
-                    url={item?.article_url}
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
                   />
-                  {/* <PlaceholderCard/> */}
-                  {/* <CardSizeWrapper>
-                  <ArticleCard/>
-                  </CardSizeWrapper> */}
                 </CardWrapper>
               </Row>
             );
@@ -221,15 +211,11 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
               <Row key={index} offset={offset}>
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item?.article_title}
-                    byline={item?.article_byline}
-                    imageUrl={item?.article_image}
-                    url={item?.article_url}
+                    title={item.article_title}
+                    byline={item.article_byline}
+                    imageUrl={item.article_image}
+                    url={item.article_url}
                   />
-                  {/* <PlaceholderCard/> */}
-                  {/* <CardSizeWrapper>
-                  <ArticleCard/>
-                  </CardSizeWrapper> */}
                 </CardWrapper>
               </Row>
             );
