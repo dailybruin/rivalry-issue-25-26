@@ -32,19 +32,28 @@ function App() {
     ? Array.isArray(data) ? data : (data.items || data.articles || []).slice(0, 6)
     : [];
 
+  const quotes = data 
+    ? Array.isArray(data) ? data : data.quotes
+    : [];
+
+  const description = data 
+    ? Array.isArray(data) ? data : data.description_text
+    : "";
+    
+
   return (
     <div className="App">
       <Header />
       <Landing data={data} />
       {isDesktop && (
         <>
-        <TextSection text={data.description_text}/>
+        <TextSection text={description}/>
         <main>
-          <ArticleGrid articles={articles} quotes={data.quotes} />
+          <ArticleGrid articles={articles} quotes={quotes} />
         </main>
         </>
       )}
-      <MobileContainer data={data} />
+      <MobileContainer data={data} text={description} articles={articles} quotes={quotes}/>
       <Footer />
     </div>
   );

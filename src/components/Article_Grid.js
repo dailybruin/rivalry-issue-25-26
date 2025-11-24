@@ -155,10 +155,10 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
+                    title={item?.article_title}
+                    byline={item?.article_byline}
+                    imageUrl={item?.article_image}
+                    url={item?.article_url}
                   />
                   {/* <CardSizeWrapper>
                   <ArticleCard/>
@@ -181,10 +181,10 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
                 )}
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
+                    title={item?.article_title}
+                    byline={item?.article_byline}
+                    imageUrl={item?.article_image}
+                    url={item?.article_url}
                   />
                   {/* <PlaceholderCard/> */}
                   {/* <CardSizeWrapper>
@@ -221,10 +221,10 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
               <Row key={index} offset={offset}>
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
+                    title={item?.article_title}
+                    byline={item?.article_byline}
+                    imageUrl={item?.article_image}
+                    url={item?.article_url}
                   />
                   {/* <PlaceholderCard/> */}
                   {/* <CardSizeWrapper>
