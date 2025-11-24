@@ -2,7 +2,7 @@
 import rivalryLanding from "../images/rivalrylanding.png"
 import "./Landing.css";
 
-const Landing = () => {
+const Landing = ({landing}) => {
   return (
     <div className="landing-container">
       <img src={rivalryLanding} alt="Landing illustration" />

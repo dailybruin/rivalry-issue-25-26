@@ -133,7 +133,7 @@ const CardSizeWrapper = styled.div`
   }
 `;
 
-const ArticleGrid = ({ articles = [] }) => {
+const ArticleGrid = ({ articles = [], quotes = [] }) => {
   const rows = Array.from({ length: 11 }, (_, index) => articles[index] || null);
 
   return (
@@ -154,18 +154,18 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
                 <CardWrapper align={cardAlign}>
-                  {/* <ArticleCard
+                  <ArticleCard
                     title={item.article_title}
                     byline={item.article_byline}
                     imageUrl={item.article_image}
                     url={item.article_url}
-                  /> */}
-                  <CardSizeWrapper>
+                  />
+                  {/* <CardSizeWrapper>
                   <ArticleCard/>
-                  </CardSizeWrapper>
+                  </CardSizeWrapper> */}
                 </CardWrapper>
-                {index === 2 && (
-                  <QuoteWrapper align="right"><PullQuote align="right" /></QuoteWrapper>
+                {index === 2 && quotes[0] && (
+                  <QuoteWrapper align="right"><PullQuote text={quotes[0]} align="right" /></QuoteWrapper>
                 )}
               </Row>
             );
@@ -176,20 +176,20 @@ const ArticleGrid = ({ articles = [] }) => {
             const offset = index === 4 ? "half" : "-15vh";
             return (
               <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
-                {index === 5 && (
-                  <QuoteWrapper align="left"><PullQuote align="left" /></QuoteWrapper>
+                {index === 5 && quotes[1] && (
+                  <QuoteWrapper align="left"><PullQuote text={quotes[1]} align="left" /></QuoteWrapper>
                 )}
                 <CardWrapper align={cardAlign}>
-                  {/* <ArticleCard
+                  <ArticleCard
                     title={item.article_title}
                     byline={item.article_byline}
                     imageUrl={item.article_image}
                     url={item.article_url}
-                  /> */}
+                  />
                   {/* <PlaceholderCard/> */}
-                  <CardSizeWrapper>
+                  {/* <CardSizeWrapper>
                   <ArticleCard/>
-                  </CardSizeWrapper>
+                  </CardSizeWrapper> */}
                 </CardWrapper>
               </Row>
             );
@@ -202,13 +202,13 @@ const ArticleGrid = ({ articles = [] }) => {
             else if (index === 8) offset = "-25vh";
             else offset = "half";
 
-            if (index === 10) {
+            if (index === 10 && quotes[2]) {
               /*console.log("ten")*/
               return (
                 <Row key={index} offset="-15vh" alignLeft={true}>
                   <CardWrapper align="left">
                     <QuoteWrapper align="left" fixed>
-                      <PullQuote align="left" />
+                      <PullQuote text={quotes[2]} align="left" />
                     </QuoteWrapper>
                   </CardWrapper>
                   {/* keep the right column present so alignment matches other rows */}
@@ -220,16 +220,16 @@ const ArticleGrid = ({ articles = [] }) => {
             return (
               <Row key={index} offset={offset}>
                 <CardWrapper align={cardAlign}>
-                  {/* <ArticleCard
+                  <ArticleCard
                     title={item.article_title}
                     byline={item.article_byline}
                     imageUrl={item.article_image}
                     url={item.article_url}
-                  /> */}
+                  />
                   {/* <PlaceholderCard/> */}
-                  <CardSizeWrapper>
+                  {/* <CardSizeWrapper>
                   <ArticleCard/>
-                  </CardSizeWrapper>
+                  </CardSizeWrapper> */}
                 </CardWrapper>
               </Row>
             );
