@@ -12,7 +12,9 @@ import './ArticleCard.css'; // <-- Import the new CSS file
  * - url (string): The link for the entire card (article_url)
  */
 export default function ArticleCard({ title, byline, imageUrl, url }) {
-  
+  title = title ? title : ""
+  byline = byline ? byline : ""
+
   // Fallback image handler
   const handleImageError = (e) => {
     e.target.onerror = null; // Prevents infinite loop

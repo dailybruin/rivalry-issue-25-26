@@ -39,17 +39,17 @@ const description3 = "ex duis cillum. Dolore et nisi occaecat enim labore exerci
 const quote = "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lorem enim. Elit commodo pariatur minim proident elit cupidatat velit Lorem labore.";
 const headline = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
 const byline = "By this person, more people and maybe even more";
-const MobileContainer = ({data}) => {
+const MobileContainer = ({data, text, articles, quotes}) => {
     // const description1Content = description1;
     // const description2Content = description2;
     // const description3Content = description3;
-    const descriptionContent = data.description_text;
+    const descriptionContent = text
     // const quoteContent = quote;
-    const articles = [...(data.articles || [])];
-    const quotes = [...(data.quotes || [])];
+    // const articles = [...(data.articles || [])];
+    // const quotes = [...(data.quotes || [])];
     // const headlineContent = headline;
     // const bylineContent = byline;
-    const containerContent = (data.sequence || []).map(type => {
+    const containerContent = (data?.sequence || []).map(type => {
         if (type === "article") return articles.shift();
         if (type === "quote") return quotes.shift();
         return null;
@@ -126,7 +126,7 @@ const MobileContainer = ({data}) => {
             </Gradient>
             <Field>
                 {containerContent.map((content, i) => (
-                    content.article_title ? (
+                    content?.article_title ? (
                         <CardMobile key={i} headlineContent={content.article_title} bylineContent={content.article_byline} />
                     ) : (
                         <QuoteMobile key={i} quoteContent={content.quote_text} />
