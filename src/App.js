@@ -22,7 +22,7 @@ function App() {
   
   useEffect(() => {
     // FIXME: NEW KERCHOFF PACKAGE
-		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-24-25")
+		fetch("https://kerckhoff.dailybruin.com/api/packages/flatpages/rivalry-issue-25-26")
 		.then(res => res.json())
 		.then(res => setData(res.data['article.aml']))
   }, [])
