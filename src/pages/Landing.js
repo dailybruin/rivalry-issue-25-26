@@ -3,10 +3,12 @@
 import "./Landing.css";
 
 const Landing = ({data}) => {
+  if (!data) return null;
+  
   const creditText = data.landing_credits || "Helen Juwon Park / Illustrations Director & Kaylen Ho / Daily Bruin Staff"
   return (
     <div className="landing-container">
-      <img src={data.landing_image} alt="Landing illustration" />
+      {data.landing_image && <img src={data.landing_image} alt="Landing illustration" />}
       <div className="credits">
         <h1>{creditText}</h1>
       </div>

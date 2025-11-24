@@ -40,6 +40,8 @@ const quote = "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lo
 const headline = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
 const byline = "By this person, more people and maybe even more";
 const MobileContainer = ({data}) => {
+    if (!data) return null;
+    
     // const description1Content = description1;
     // const description2Content = description2;
     // const description3Content = description3;
