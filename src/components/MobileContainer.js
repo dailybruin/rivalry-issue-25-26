@@ -39,92 +39,98 @@ const description3 = "ex duis cillum. Dolore et nisi occaecat enim labore exerci
 const quote = "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lorem enim. Elit commodo pariatur minim proident elit cupidatat velit Lorem labore.";
 const headline = "Headline Goes Here! Here are some more words until we reach the 82 character limit";
 const byline = "By this person, more people and maybe even more";
-const MobileContainer = () => {
-    const description1Content = description1;
-    const description2Content = description2;
-    const description3Content = description3;
-    const quoteContent = quote;
-    const headlineContent = headline;
-    const bylineContent = byline;
-    const containerContent = [
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "quote",
-            "quote": quote
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "quote",
-            "quote": quote
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "quote",
-            "quote": quote
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-        {
-            "type": "article",
-            "headline": headline,
-            "byline": byline
-        },
-    ];
+const MobileContainer = ({data}) => {
+    // const description1Content = description1;
+    // const description2Content = description2;
+    // const description3Content = description3;
+    const descriptionContent = data.description_text;
+    // const quoteContent = quote;
+    const articles = [...(data.articles || [])];
+    const quotes = [...(data.quotes || [])];
+    // const headlineContent = headline;
+    // const bylineContent = byline;
+    const containerContent = (data.sequence || []).map(type => {
+        if (type === "article") return articles.shift();
+        if (type === "quote") return quotes.shift();
+        return null;
+    }).filter(Boolean);
+    // const containerContent = [
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "quote",
+    //         "quote": quote
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "quote",
+    //         "quote": quote
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "quote",
+    //         "quote": quote
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    //     {
+    //         "type": "article",
+    //         "headline": headline,
+    //         "byline": byline
+    //     },
+    // ];
 
     return (
         <Container>
             <Gradient>
-                <DescriptionMobile description1Content={description1Content} description2Content={description2Content} description3Content={description3Content} />
+                <DescriptionMobile descriptionContent={descriptionContent} />
             </Gradient>
             <Field>
                 {containerContent.map((content, i) => (
-                    <React.Fragment key={i}>
-                        {content.type === "article" ? (
-                            <CardMobile headlineContent={headlineContent} bylineContent={bylineContent} />
-                        ) : (
-                            <QuoteMobile quoteContent={quoteContent} />
-                        )}
-                    </React.Fragment>
+                    content.article_title ? (
+                        <CardMobile key={i} headlineContent={content.article_title} bylineContent={content.article_byline} />
+                    ) : (
+                        <QuoteMobile key={i} quoteContent={content.quote_text} />
+                    )
                 ))}
             </Field>
         </Container>

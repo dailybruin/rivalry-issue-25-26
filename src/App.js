@@ -38,13 +38,13 @@ function App() {
       <Landing data={data} />
       {isDesktop && (
         <>
-        <TextSection/>
+        <TextSection text={data.description_text}/>
         <main>
-          <ArticleGrid articles={articles} />
+          <ArticleGrid articles={articles} quotes={data.quotes} />
         </main>
         </>
       )}
-      <MobileContainer />
+      <MobileContainer data={data} />
       <Footer />
     </div>
   );

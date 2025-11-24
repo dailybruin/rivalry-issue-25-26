@@ -21,12 +21,10 @@ const DescriptionText = styled.p`
     margin-top: 3vh;
 `;
 
-const DescriptionMobile = ({ description1Content, description2Content, description3Content }) => {
+const DescriptionMobile = ({ descriptionContent }) => {
     return (
         <Container>
-            <DescriptionText>{description1Content}</DescriptionText>
-            <DescriptionText>{description2Content}</DescriptionText>
-            <DescriptionText>{description3Content}</DescriptionText>
+            <DescriptionText>{descriptionContent}</DescriptionText>
         </Container>
     )
 }
