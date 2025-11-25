@@ -35,19 +35,43 @@ const Field = styled.div`
 const MobileContainer = ({ data }) => {
   if (!data) return null;
 
+  const defaultSequence = [
+    "article",
+    "article",
+    "quote",
+    "article",
+    "quote",
+    "article",
+    "article",
+    "article",
+    "article",
+    "quote",
+    "article",
+    "article",
+    "article"
+  ];
+
   const descriptionContent =
     typeof data.description_text === "object" && data.description_text?.text
       ? data.description_text.text
       : data.description_text;
   const articles = [...(data.articles || [])];
   const quotes = [...(data.quotes || [])];
-  const containerContent = (data.sequence || [])
+  const sequence = data.sequence && data.sequence.length > 0
+    ? data.sequence
+    : defaultSequence;
+  const containerContent = sequence
     .map((type) => {
       if (type === "article") return articles.shift();
       if (type === "quote") return quotes.shift();
       return null;
     })
     .filter(Boolean);
+
+  console.log("sequence:", sequence);
+  console.log("articles:", data.articles);
+  console.log("containerContent:", containerContent);
+
 
   return (
     <Container>
