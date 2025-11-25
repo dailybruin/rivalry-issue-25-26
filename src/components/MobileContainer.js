@@ -81,6 +81,7 @@ const MobileContainer = ({ data }) => {
               key={i}
               headlineContent={content.article_title}
               bylineContent={content.article_byline}
+              url={content.url}
             />
           ) : (
             <QuoteMobile

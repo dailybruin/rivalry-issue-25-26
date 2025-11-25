@@ -29,6 +29,14 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
+.article-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-card-link:hover {
+  text-decoration: underline;
+}
 
 /* Article image styles */
 .article-card-image-wrapper {

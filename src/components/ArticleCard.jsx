@@ -48,8 +48,10 @@ export default function ArticleCard({ title, byline, imageUrl, url }) {
         {" "}
         {/* Article Title (Headline) - Truncated */}
         <h2 className="article-card-title">
+          <a href={url} className="article-card-link">
           {" "}
           {truncatedTitle}
+          </a>
         </h2>
         {/* Article Byline (styled as sub-headline) */}
         {byline && (

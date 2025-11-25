@@ -45,11 +45,11 @@ const Byline = styled.p`
     margin-bottom: 15px;
 `;
 
-const CardMobile = ({ headlineContent, bylineContent }) => {
+const CardMobile = ({ headlineContent, bylineContent, url}) => {
     return (
         <Container>
             <Image src={SampleImage} alt="Card Image" />
-            <Headline>{headlineContent}</Headline>
+            <Headline><a href={url}>{headlineContent}</a></Headline>
             <Byline>{bylineContent}</Byline>
         </Container>
     )
