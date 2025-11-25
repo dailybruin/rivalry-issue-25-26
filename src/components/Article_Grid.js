@@ -122,10 +122,42 @@ const CardSizeWrapper = styled.div`
 `;
 
 const ArticleGrid = ({ articles = [], quotes = [] }) => {
+  const isValidQuote = (quote) => {
+    if (!quote) return false;
+    if (typeof quote === "string") return quote.trim().length > 0;
+    if (typeof quote === "object" && quote?.text)
+      return typeof quote.text === "string" && quote.text.trim().length > 0;
+    return false;
+  };
+
+  const quotePositions = {
+    2: { quoteIndex: 0, align: "right", offset: "-15vh", quoteOnly: false },
+    5: { quoteIndex: 1, align: "left", offset: "-15vh", quoteOnly: true },
+    10: { quoteIndex: 2, align: "left", offset: "-15vh", quoteOnly: true },
+  };
+
+  const maxArticleIndex = Math.max(
+    articles.length - 1,
+    ...Object.keys(quotePositions)
+      .map(Number)
+      .filter((idx) => quotePositions[idx].quoteOnly)
+  );
+  const totalRows = Math.max(11, maxArticleIndex + 1);
+
   const rows = Array.from(
-    { length: 11 },
+    { length: totalRows },
     (_, index) => articles[index] || null
   );
+
+  const getOffset = (index) => {
+    if (index === 0) return "5vh";
+    if (index === 1) return "half";
+    if (index === 4) return "half";
+    if (index === 6) return "-10vh";
+    if (index === 8) return "-25vh";
+    if (quotePositions[index]) return quotePositions[index].offset;
+    return "half";
+  };
 
   return (
     <BackgroundWrapper>
@@ -136,43 +168,55 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
       {/* Main content */}
       <Container>
         {rows.map((item, index) => {
-          if (!item) return null;
-
           const isEven = index % 2 === 0;
           const cardAlign = isEven ? "left" : "right";
+          const quoteConfig = quotePositions[index];
+          const hasQuote =
+            quoteConfig && isValidQuote(quotes[quoteConfig.quoteIndex]);
+          const hasArticle = !!item;
+          const isQuoteOnly = quoteConfig?.quoteOnly && !hasArticle;
 
-          // First 3 cards (0-2)
-          if (index < 3) {
-            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-15vh";
+          if (!hasArticle && !hasQuote) return null;
+
+          if (isQuoteOnly && hasQuote) {
             return (
-              <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
-                <CardWrapper align={cardAlign}>
-                  <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
-                  />
-                </CardWrapper>
-                {index === 2 && quotes[0] && (
-                  <QuoteWrapper align="right">
-                    <PullQuote text={quotes[0]} align="right" />
+              <Row
+                key={`quote-${index}`}
+                offset={quoteConfig.offset}
+                alignLeft={quoteConfig.align === "left"}
+              >
+                <CardWrapper align={quoteConfig.align}>
+                  <QuoteWrapper align={quoteConfig.align}>
+                    <PullQuote
+                      text={quotes[quoteConfig.quoteIndex]}
+                      align={quoteConfig.align}
+                    />
                   </QuoteWrapper>
-                )}
+                </CardWrapper>
+                <CardWrapper
+                  align={quoteConfig.align === "left" ? "right" : "left"}
+                />
               </Row>
             );
           }
 
-          // Next 3 cards (3-5)
-          if (index < 6) {
-            const offset = index === 4 ? "half" : "-15vh";
+          if (hasArticle) {
+            const offset = getOffset(index);
             return (
-              <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
-                {index === 5 && quotes[1] && (
+              <Row
+                key={`article-${index}`}
+                offset={offset}
+                alignLeft={cardAlign === "left"}
+              >
+                {hasQuote && quoteConfig.align === "left" && (
                   <QuoteWrapper align="left">
-                    <PullQuote text={quotes[1]} align="left" />
+                    <PullQuote
+                      text={quotes[quoteConfig.quoteIndex]}
+                      align="left"
+                    />
                   </QuoteWrapper>
                 )}
+
                 <CardWrapper align={cardAlign}>
                   <ArticleCard
                     title={item.article_title}
@@ -181,42 +225,15 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
                     url={item.article_url}
                   />
                 </CardWrapper>
-              </Row>
-            );
-          }
 
-          // Last 5 cards (6-10)
-          if (index < 11) {
-            let offset;
-            if (index === 6) offset = "-10vh";
-            else if (index === 8) offset = "-25vh";
-            else offset = "half";
-
-            if (index === 10 && quotes[2]) {
-              /*console.log("ten")*/
-              return (
-                <Row key={index} offset="-15vh" alignLeft={true}>
-                  <CardWrapper align="left">
-                    <QuoteWrapper align="left" fixed>
-                      <PullQuote text={quotes[2]} align="left" />
-                    </QuoteWrapper>
-                  </CardWrapper>
-                  {/* keep the right column present so alignment matches other rows */}
-                  <CardWrapper align="right" />
-                </Row>
-              );
-            }
-
-            return (
-              <Row key={index} offset={offset}>
-                <CardWrapper align={cardAlign}>
-                  <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
-                  />
-                </CardWrapper>
+                {hasQuote && quoteConfig.align === "right" && (
+                  <QuoteWrapper align="right">
+                    <PullQuote
+                      text={quotes[quoteConfig.quoteIndex]}
+                      align="right"
+                    />
+                  </QuoteWrapper>
+                )}
               </Row>
             );
           }

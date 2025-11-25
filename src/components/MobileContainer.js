@@ -1,66 +1,82 @@
-import React from 'react';
-import { mediaQueries } from '../shared/config';
-import styled from 'styled-components';
-import DescriptionMobile from './DescriptionMobile';
-import CardMobile from './CardMobile';
-import QuoteMobile from './QuoteMobile';
-import clouds from '../images/clouds.png';
-import fieldmarks from '../images/fieldmarks.png';
-import grass from '../images/grass.png';
-
+import React from "react";
+import { mediaQueries } from "../shared/config";
+import styled from "styled-components";
+import DescriptionMobile from "./DescriptionMobile";
+import CardMobile from "./CardMobile";
+import QuoteMobile from "./QuoteMobile";
+import clouds from "../images/clouds.png";
+import fieldmarks from "../images/fieldmarks.png";
+import grass from "../images/grass.png";
 
 const Container = styled.div`
-    display: none;
-    ${mediaQueries.mobile} {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-`;
-const Gradient = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background: linear-gradient(to bottom, #548B32, #DDF0F6);
-`;
-const Field = styled.div`
+  display: none;
+  ${mediaQueries.mobile} {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-bottom: 12vh;
-    background-image: url(${clouds}), url(${fieldmarks}), url(${grass});
-    background-size: cover, cover, cover;
+  }
 `;
-const MobileContainer = ({data}) => {
-    if (!data) return null;
+const Gradient = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to bottom, #548b32, #ddf0f6);
+`;
+const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 12vh;
+  background-image: url(${clouds}), url(${fieldmarks}), url(${grass});
+  background-size: cover, cover, cover;
+`;
+const MobileContainer = ({ data }) => {
+  if (!data) return null;
 
-    const descriptionContent = data.description_text;
-    const articles = [...(data.articles || [])];
-    const quotes = [...(data.quotes || [])];
-    const containerContent = (data.sequence || []).map(type => {
-        if (type === "article") return articles.shift();
-        if (type === "quote") return quotes.shift();
-        return null;
-    }).filter(Boolean);
+  const descriptionContent =
+    typeof data.description_text === "object" && data.description_text?.text
+      ? data.description_text.text
+      : data.description_text;
+  const articles = [...(data.articles || [])];
+  const quotes = [...(data.quotes || [])];
+  const containerContent = (data.sequence || [])
+    .map((type) => {
+      if (type === "article") return articles.shift();
+      if (type === "quote") return quotes.shift();
+      return null;
+    })
+    .filter(Boolean);
 
-    return (
-        <Container>
-            <Gradient>
-                <DescriptionMobile descriptionContent={descriptionContent} />
-            </Gradient>
-            <Field>
-                {containerContent.map((content, i) => (
-                    content.article_title ? (
-                        <CardMobile key={i} headlineContent={content.article_title} bylineContent={content.article_byline} />
-                    ) : (
-                        <QuoteMobile key={i} quoteContent={content.quote_text} />
-                    )
-                ))}
-            </Field>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Gradient>
+        <DescriptionMobile descriptionContent={descriptionContent} />
+      </Gradient>
+      <Field>
+        {containerContent.map((content, i) =>
+          content.article_title ? (
+            <CardMobile
+              key={i}
+              headlineContent={content.article_title}
+              bylineContent={content.article_byline}
+            />
+          ) : (
+            <QuoteMobile
+              key={i}
+              quoteContent={
+                typeof content.quote_text === "object" &&
+                content.quote_text?.text
+                  ? content.quote_text.text
+                  : content.quote_text
+              }
+            />
+          )
+        )}
+      </Field>
+    </Container>
+  );
+};
 
 export default MobileContainer;
