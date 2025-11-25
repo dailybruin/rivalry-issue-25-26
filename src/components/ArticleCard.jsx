@@ -14,53 +14,35 @@ import "./ArticleCard.css";
 export default function ArticleCard({ title, byline, imageUrl, url }) {
   if (!title) return null;
 
-  // Fallback image handler
   const handleImageError = (e) => {
-    e.target.onerror = null; // Prevents infinite loop
-    e.target.src =
-      "https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found&font=inter";
+    e.target.onerror = null;
+    e.target.src = "https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found&font=inter";
   };
 
-  // Truncate title to 82 characters
-  const truncatedTitle =
-    title && title.length > 82 ? title.substring(0, 82) + "..." : title || "";
+  const truncatedTitle = title.length > 82 ? title.substring(0, 82) + "..." : title;
+  console.log(truncatedTitle)
+  console.log(url)
 
   return (
-    // The entire card is a link, and a 'group' for hover effects
-    <a
-      href={url}
-      target="_blank" // Open in new tab
-      rel="noopener noreferrer" // Security best practice
-      className="article-card" // Use standard CSS class
-    >
-      {/* Article Image */}
+    <div className="article-card">
       <div className="article-card-image-wrapper">
         <img
-          className="article-card-image" // Use standard CSS class
+          className="article-card-image"
           src={imageUrl}
           alt={`Image for article: ${title}`}
           onError={handleImageError}
         />
       </div>
 
-      {/* Article Text Content */}
       <div className="article-card-content">
-        {" "}
-        {/* Article Title (Headline) - Truncated */}
         <h2 className="article-card-title">
-          <a href={url} className="article-card-link">
-          {" "}
-          {truncatedTitle}
+          <a href={url}>
+            {truncatedTitle}
           </a>
         </h2>
-        {/* Article Byline (styled as sub-headline) */}
-        {byline && (
-          <p className="article-card-byline">
-            {" "}
-            {byline}
-          </p>
-        )}
+
+        {byline && <p className="article-card-byline">{byline}</p>}
       </div>
-    </a>
+    </div>
   );
 }

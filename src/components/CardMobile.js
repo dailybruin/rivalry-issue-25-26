@@ -36,6 +36,14 @@ const Headline = styled.h2`
     width: 78%;
     text-align: left;
     margin-bottom: 0;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:hover a {
+        text-decoration: underline;
+    }
 `;
 const Byline = styled.p`
     font-size: 10px;
