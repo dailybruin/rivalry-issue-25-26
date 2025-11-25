@@ -46,24 +46,8 @@ function App() {
   const articles = data
     ? Array.isArray(data)
       ? data
-      : (data.items || data.articles || []).slice(0, 6)
+      : (data.items || data.articles || [])
     : [];
-
-  // debugging logs
-  // useEffect(() => {
-  //   if (data) {
-  //     const processedArticles = Array.isArray(data)
-  //       ? data
-  //       : (data.items || data.articles || []).slice(0, 6);
-  //     console.log("=== PROCESSED ARTICLES ===");
-  //     console.log("Articles array:", processedArticles);
-  //     console.log("Articles count:", processedArticles.length);
-  //     console.log("First article:", processedArticles[0]);
-  //     if (processedArticles.length > 0) {
-  //       console.log("First article keys:", Object.keys(processedArticles[0]));
-  //     }
-  //   }
-  // }, [data]);
 
   return (
     <div className="App">
@@ -71,7 +55,7 @@ function App() {
       {data && <Landing data={data} />}
       {isDesktop && data && (
         <>
-          <TextSection text={data.description_text} />
+          <TextSection text={typeof data.description_text === 'object' && data.description_text?.text ? data.description_text.text : data.description_text} />
           <main>
             <ArticleGrid articles={articles} quotes={data.quotes || []} />
           </main>

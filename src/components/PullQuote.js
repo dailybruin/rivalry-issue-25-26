@@ -98,7 +98,15 @@ const TEMP_TEXT =
   "Commodo officia commodo elit Lorem occaecat ullamco qui et non Lorem enim. Elit commodo pariatur minim proident elit cupidatat velit Lorem labore.";
 
 function PullQuote({ text, align }) {
-  const content = text || TEMP_TEXT;
+  // Handle case where text might be an object with a text property
+  let content = TEMP_TEXT;
+  if (text) {
+    if (typeof text === 'object' && text.text) {
+      content = text.text;
+    } else if (typeof text === 'string') {
+      content = text;
+    }
+  }
 
   return (
     <PullQuoteWrapper align={align}>

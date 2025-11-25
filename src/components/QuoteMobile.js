@@ -38,11 +38,14 @@ const QuoteMark = styled.span`
     transform: rotate(-17deg);
 `;
 
-const QuoteMobile = ({ quoteContent }) => { 
+const QuoteMobile = ({ quoteContent }) => {
+    // Handle case where quoteContent might be an object with a text property
+    const displayText = typeof quoteContent === 'object' && quoteContent?.text ? quoteContent.text : (quoteContent || '');
+    
     return (
         <Container>
-            <QuoteMark>“</QuoteMark>
-            <Content>{quoteContent}</Content>
+            <QuoteMark>"</QuoteMark>
+            <Content>{displayText}</Content>
         </Container>
     )
 } 
