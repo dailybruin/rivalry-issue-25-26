@@ -50,46 +50,27 @@ const PullQuoteText = styled.p`
 
 // Big green quotation mark in the top-left
 const QuoteMarkImage = styled.img`
-  position: absolute;
-  top: clamp(-1rem, -1.5vw, -2rem);
-  left: clamp(-2rem, -3.5vw, -5rem);
+    position: absolute;
 
-  /* Scales from 3rem to 5rem based on viewport - width controls size */
-  width: clamp(3rem, 4vw, 5rem);
-  /* Height auto ensures aspect ratio is maintained from original image */
+  /* fixed offsets relative to the box, not the viewport */
+  top: -1.1rem;   /* negative = a bit above the border */
+  left: -1.4rem;  /* negative = a bit outside to the left */
+
+  width: 3.5rem;  /* fixed size for consistency */
   height: auto;
-  /* Display block prevents inline spacing issues */
   display: block;
-  /* Preserve aspect ratio and prevent distortion */
   object-fit: contain;
-  /* Ensure no constraints interfere with natural scaling */
-  max-height: none;
-  max-width: none;
-  /* Prevent any flex/grid constraints */
   flex-shrink: 0;
-
   transform: rotate(-13.8deg);
-
   pointer-events: none;
   user-select: none;
-  z-index: 0;        /* ensure it's behind text if needed */
+  z-index: 0;
 
+  /* small tweak for very narrow screens only */
   @media (max-width: 48em) {
-    top: clamp(-0.75rem, -1vw, -1.5rem);
-    left: clamp(-1.5rem, -2.5vw, -3rem);
-    /* Even smaller on mobile: scales from 1.5rem to 3rem */
-    width: clamp(1.5rem, 5vw, 3rem);
-    /* Maintain aspect ratio on mobile too */
-    height: auto;
-  }
-
-  @media (max-width: 30em) {
-    /* Extra small screens: scale down even more */
-    width: clamp(1.25rem, 4vw, 2.5rem);
-    top: clamp(-0.5rem, -0.75vw, -1rem);
-    left: clamp(-1rem, -2vw, -2rem);
-    /* Maintain aspect ratio on extra small screens */
-    height: auto;
+    top: -0.8rem;
+    left: -1rem;
+    width: 3rem;
   }
 `;
 

@@ -136,90 +136,104 @@ const ArticleGrid = ({ articles = [], quotes = [] }) => {
       {/* Main content */}
       <Container>
         {rows.map((item, index) => {
-          if (!item) return null;
+          const hasArticle = !!item;
 
           const isEven = index % 2 === 0;
           const cardAlign = isEven ? "left" : "right";
 
           // First 3 cards (0-2)
           if (index < 3) {
-            const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-15vh";
-            return (
-              <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
-                <CardWrapper align={cardAlign}>
-                  <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
-                  />
-                </CardWrapper>
-                {index === 2 && quotes[0] && (
-                  <QuoteWrapper align="right">
-                    <PullQuote text={quotes[0]} align="right" />
-                  </QuoteWrapper>
-                )}
-              </Row>
-            );
-          }
+  const offset = index === 0 ? "5vh" : index === 1 ? "half" : "-3vh";
+
+  return (
+    <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
+      {hasArticle && (
+        <CardWrapper align={cardAlign}>
+          <CardSizeWrapper>
+            <ArticleCard
+              title={item.article_title}
+              byline={item.article_byline}
+              imageUrl={item.article_image}
+              url={item.article_url}
+            />
+          </CardSizeWrapper>
+        </CardWrapper>
+      )}
+
+      {index === 2 && quotes[0] && (
+        <QuoteWrapper align="right">
+          <PullQuote text={quotes[0]} align="right" />
+        </QuoteWrapper>
+      )}
+    </Row>
+  );
+}
 
           // Next 3 cards (3-5)
           if (index < 6) {
-            const offset = index === 4 ? "half" : "-15vh";
-            return (
-              <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
-                {index === 5 && quotes[1] && (
-                  <QuoteWrapper align="left">
-                    <PullQuote text={quotes[1]} align="left" />
-                  </QuoteWrapper>
-                )}
-                <CardWrapper align={cardAlign}>
-                  <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
-                  />
-                </CardWrapper>
-              </Row>
-            );
-          }
+  const offset = index === 4 ? "half" : "-5vh";
 
+  return (
+    <Row key={index} offset={offset} alignLeft={cardAlign === "left"}>
+      {index === 5 && quotes[1] && (
+        <QuoteWrapper align="left">
+          <PullQuote text={quotes[1]} align="left" />
+        </QuoteWrapper>
+      )}
+
+      {hasArticle && (
+        <CardWrapper align={cardAlign}>
+          <CardSizeWrapper>
+            <ArticleCard
+              title={item.article_title}
+              byline={item.article_byline}
+              imageUrl={item.article_image}
+              url={item.article_url}
+            />
+          </CardSizeWrapper>
+        </CardWrapper>
+      )}
+    </Row>
+  );
+}
           // Last 5 cards (6-10)
           if (index < 11) {
-            let offset;
-            if (index === 6) offset = "-10vh";
-            else if (index === 8) offset = "-25vh";
-            else offset = "half";
+  let offset;
+  if (index === 6) offset = "-4vh";
+  else if (index === 8) offset = "-8vh";
+  else offset = "half";
 
-            if (index === 10 && quotes[2]) {
-              /*console.log("ten")*/
-              return (
-                <Row key={index} offset="-15vh" alignLeft={true}>
-                  <CardWrapper align="left">
-                    <QuoteWrapper align="left" fixed>
-                      <PullQuote text={quotes[2]} align="left" />
-                    </QuoteWrapper>
-                  </CardWrapper>
-                  {/* keep the right column present so alignment matches other rows */}
-                  <CardWrapper align="right" />
-                </Row>
-              );
-            }
+  if (index === 10 && quotes[2]) {
+    return (
+      <Row key={index} offset="-15vh" alignLeft={true}>
+        <CardWrapper align="left">
+          <QuoteWrapper align="left" fixed>
+            <PullQuote text={quotes[2]} align="left" />
+          </QuoteWrapper>
+        </CardWrapper>
+        {/* keep the right column present so alignment matches other rows */}
+        <CardWrapper align="right" />
+      </Row>
+    );
+  }
 
-            return (
-              <Row key={index} offset={offset}>
-                <CardWrapper align={cardAlign}>
-                  <ArticleCard
-                    title={item.article_title}
-                    byline={item.article_byline}
-                    imageUrl={item.article_image}
-                    url={item.article_url}
-                  />
-                </CardWrapper>
-              </Row>
-            );
-          }
+  return (
+    <Row key={index} offset={offset}>
+      {hasArticle && (
+        <CardWrapper align={cardAlign}>
+          <CardSizeWrapper>
+            <ArticleCard
+              title={item.article_title}
+              byline={item.article_byline}
+              imageUrl={item.article_image}
+              url={item.article_url}
+            />
+          </CardSizeWrapper>
+        </CardWrapper>
+      )}
+    </Row>
+  );
+}
 
           return null;
         })}
