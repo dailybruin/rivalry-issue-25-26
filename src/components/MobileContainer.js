@@ -68,10 +68,6 @@ const MobileContainer = ({ data }) => {
     })
     .filter(Boolean);
 
-  console.log("sequence:", sequence);
-  console.log("articles:", data.articles);
-  console.log("containerContent:", containerContent);
-
 
   return (
     <Container>
@@ -90,10 +86,10 @@ const MobileContainer = ({ data }) => {
             <QuoteMobile
               key={i}
               quoteContent={
-                typeof content.quote_text === "object" &&
-                content.quote_text?.text
-                  ? content.quote_text.text
-                  : content.quote_text
+                content.text ||
+                content.quote_text?.text ||
+                content.quote_text ||
+                ""
               }
             />
           )
