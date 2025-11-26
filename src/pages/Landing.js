@@ -1,4 +1,4 @@
-// import landingImg from "../images/landing.png";
+import landingImg from "../images/rivalrylanding.png";
 import "./Landing.css";
 
 const Landing = ({data}) => {
@@ -7,7 +7,7 @@ const Landing = ({data}) => {
   const creditText = data.landing_credits || "Helen Juwon Park / Illustrations Director & Kaylen Ho / Daily Bruin Staff"
   return (
     <div className="landing-container">
-      {data.landing_image && <img src={data.landing_image} alt="Landing illustration" />}
+      <img src={landingImg} alt="Landing illustration" />
       <div className="credits">
         <h1>{creditText}</h1>
       </div>
