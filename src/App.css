@@ -4,7 +4,7 @@ html, body, .App {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* Load ITC Century font for use in components (e.g. PullQuote, Header) */
