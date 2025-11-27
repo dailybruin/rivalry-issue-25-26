@@ -79,6 +79,7 @@ const MobileContainer = ({ data }) => {
           content.article_title ? (
             <CardMobile
               key={i}
+              image={content.article_image}
               headlineContent={content.article_title}
               bylineContent={content.article_byline}
               url={content.url}

@@ -1,6 +1,6 @@
 import { mediaQueries } from '../shared/config';
 import styled from 'styled-components';
-import SampleImage from '../images/CardSampleImg.jpg';
+// import SampleImage from '../images/CardSampleImg.jpg';
 
 const Container = styled.div`
     display: none;
@@ -53,10 +53,10 @@ const Byline = styled.p`
     margin-bottom: 15px;
 `;
 
-const CardMobile = ({ headlineContent, bylineContent, url}) => {
+const CardMobile = ({ image, headlineContent, bylineContent, url}) => {
     return (
         <Container>
-            <Image src={SampleImage} alt="Card Image" />
+            <Image src={image} alt="Card Image" />
             <Headline><a href={url}>{headlineContent}</a></Headline>
             <Byline>{bylineContent}</Byline>
         </Container>
