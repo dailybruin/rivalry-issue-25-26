@@ -1,4 +1,4 @@
-import landingImg from "../images/rivalrylanding.png";
+import landingImg from "../images/rivalrylanding.gif";
 import "./Landing.css";
 
 const Landing = ({data}) => {
